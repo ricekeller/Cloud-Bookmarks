@@ -16,14 +16,22 @@ var BookmarkList = React.createClass(
     {
       var qs=that.props.qs.toUpperCase();
       if(qs==="" || qs.length===0)
-        filtered.push(React.createElement('li',{className:'list-group-item',key:bookmark.id},bookmark.title));
+        filtered.push(React.createElement('li',{className:'list-group-item',key:bookmark.id},
+          React.createElement('a',{href:bookmark.url}, bookmark.title)));
       else if(bookmark.title.toUpperCase().indexOf(qs)!==-1)
       {
-        filtered.push(React.createElement('li',{className:'list-group-item',key:bookmark.id},bookmark.title));
+        filtered.push(React.createElement('li',{className:'list-group-item',key:bookmark.id},
+          React.createElement('a',{href:bookmark.url}, bookmark.title)));
       }
     });
+    var t=filtered.length<2?" result":" results";
     return (
-      React.createElement('ul',{className:'list-group'},filtered)
+      React.createElement('div',{},
+        React.createElement('div',{className:'form-group'},
+          React.createElement('p',{className:'label label-info'},"Found " + filtered.length.toString() + t)
+          ),
+        React.createElement('ul',{className:'list-group'},filtered)
+      )
     );
   } 
 });
