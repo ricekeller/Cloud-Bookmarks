@@ -1,34 +1,27 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+var bookmarkList=[];
+var root=document.getElementById('root');
 
-let bookmarkList=[];
-//var $=require('jquery');
-
-class BookmarksViewer extends React.Component
+var BookmarksViewer = React.createClass(
 {
-  // constructor(props)
-  // {
-  //   super(props);
-  //   // $.get("http://home.iammiyan.com/db/bookmarks/get/",function (data) 
-  //   // {
-  //   //   bookmarkList=data;
-  //   // });
-  // }
-  render()
+  propTypes:
+  {
+    bookmarks: React.PropTypes.array.isRequired,
+  },
+
+  render:function ()
   {
     return (
-      <div className='panel panel-info'>
-        <div className='panel-heading'>
-          <h1 className='text-center'>MY{'\''}s Bookmarks</h1>
-        </div>
-        <div className='panel-body'>
-
-        </div>
-      </div>
+      React.createElement('div',{className:'panel panel-info'},
+        React.createElement('div',{className:'panel-heading'},
+          React.createElement('h1',{className:'text-center'},"MY's Bookmarks")
+        ),
+        React.createElement('div',{className:'panel-body'},"test"))
     );
   } 
-}
+});
 
-
-
-ReactDOM.render(<BookmarksViewer list={bookmarkList} />,document.getElementById('container'));
+$.get("http://home.iammiyan.com/db/bookmarks/get/",function (data) 
+{
+  bookmarkList=data;
+  ReactDOM.render(React.createElement(BookmarksViewer,{bookmarks:bookmarkList}), root);
+});
