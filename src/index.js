@@ -88,7 +88,7 @@ var BookmarksViewer = React.createClass(
   } 
 });
 
-$.get("http://home.iammiyan.com/db/bookmarks/get/",function (data) 
+$.get("https://home.iammiyan.com/db/bookmarks/get/",function (data) 
 {
   if(data && data.length>0)
   {
