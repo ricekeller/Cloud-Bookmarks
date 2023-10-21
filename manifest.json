@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Cloud Bookmarks",
+  "description": "This extension saves bookmarks to cloud",
+  "version": "0.1",
+
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "https://*/*"
+  ]
+}

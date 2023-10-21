@@ -1,18 +1,24 @@
 {
-  "name": "MY-Bookmarks-Viewer",
-  "version": "0.1.0",
+  "name": "cloud-bookmarks",
   "private": true,
-  "devDependencies": {
-    "react-scripts": "0.7.0"
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "vue": "^3.3.4",
+    "vuetify": "^3.3.22"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@mdi/font": "^7.3.67",
+    "@types/chrome": "^0.0.248",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "chrome-types": "^0.1.233",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vue-tsc": "^1.8.5"
   }
 }
