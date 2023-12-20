@@ -1,37 +1,45 @@
 <script lang="ts">
 //import BookmarkItem from './components/BookmarkItem.vue';
 
+type Bookmark =
+	{
+		favIcon: string,
+		title: string,
+		url: string
+	}
+const bookmarks: Bookmark[] = [
+	{
+		favIcon: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
+		title: "Nextjs",
+		url: `https://nextjs.org`,
+	},
+	{
+		favIcon: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
+		title: "Estelle Mi",
+		url: `https://estellemi.com`,
+	},
+	{
+		favIcon: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
+		title: "Nextjs",
+		url: `https://nextjs.org`,
+	},
+	{
+		favIcon: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
+		title: "Nextjs",
+		url: `https://nextjs.org`,
+	},
+	{
+		favIcon: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
+		title: "Nextjs",
+		url: `https://nextjs.org`,
+	},
+];
 export default {
 	// Data properties
+
 	data() {
 		return {
-			items: [
-				{
-					favIcon: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-					title: "Nextjs",
-					url: `https://nextjs.org`,
-				},
-				{
-					favIcon: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
-					title: "Estelle Mi",
-					url: `https://estellemi.com`,
-				},
-				{
-					favIcon: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
-					title: "Nextjs",
-					url: `https://nextjs.org`,
-				},
-				{
-					favIcon: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
-					title: "Nextjs",
-					url: `https://nextjs.org`,
-				},
-				{
-					favIcon: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
-					title: "Nextjs",
-					url: `https://nextjs.org`,
-				},
-			],
+			bookmarks: bookmarks,
 			currentTab: {
 				title: "test",
 				url: "https://localhost",
@@ -45,10 +53,10 @@ export default {
 	computed: {
 		filteredItems() {
 			if (this.searchText === "") {
-				return this.items;
+				return this.bookmarks;
 			}
 
-			return this.items.filter(item => item.title?.includes(this.searchText) || item.url?.includes(this.searchText));
+			return this.bookmarks.filter(item => item.title?.includes(this.searchText) || item.url?.includes(this.searchText));
 		}
 	},
 
@@ -126,7 +134,7 @@ export default {
 			<v-list-item-group v-if="filteredItems.length > 0">
 				<template v-slot:default>
 					<v-subheader>All Bookmarks</v-subheader>
-					<v-list-item v-for="(item, index) in items" :key="index">
+					<v-list-item v-for="(item, index) in bookmarks" :key="index">
 						<div style="display: flex;">
 							<v-avatar>
 								<v-img :src="item.favIcon"></v-img>
@@ -137,13 +145,13 @@ export default {
 							</div>
 							<v-spacer></v-spacer>
 							<div>
-								<v-btn icon="mdi-open-in-new" variant="text" color="green-darken-3"
+								<v-btn color="green-darken-3" icon="mdi-open-in-new" variant="text"
 									@click="() => openBookmark(item)"></v-btn>
 								<v-btn color="grey-lighten-1" icon="mdi-delete" variant="text"
 									@click="() => deleteBookmark(item)"></v-btn>
 							</div>
 						</div>
-						<v-divider v-if="index < items.length - 1" inset></v-divider>
+						<v-divider v-if="index < bookmarks.length - 1" inset></v-divider>
 					</v-list-item>
 				</template>
 			</v-list-item-group>
